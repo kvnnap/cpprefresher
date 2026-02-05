@@ -12,7 +12,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 
 project(hello)
 
-add_executable(hello main.cpp)
+add_executable(hello main.cpp shape.cpp)
 target_sources(hello PRIVATE FILE_SET CXX_MODULES FILES test_module.cpp another_module.cpp shape_module.cpp)
 set_target_properties(hello PROPERTIES 
     CXX_STANDARD 23
