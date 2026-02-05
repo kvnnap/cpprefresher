@@ -3,7 +3,11 @@
 {
 	"name": "C++",
 	"build": {
-		"dockerfile": "Dockerfile"
+		"dockerfile": "Dockerfile",
+		"args": {
+			"UID": "1000",
+			"GID": "1000"
+		}
 	},
 
 	// Features to add to the dev container. More info: https://containers.dev/features.

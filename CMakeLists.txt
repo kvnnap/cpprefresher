@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.31.6)
+cmake_minimum_required(VERSION 4.2.3)
 
 # Set experimental flag to enable `import std` support from CMake.
 # This must be enabled before C++ language support.
@@ -8,7 +8,7 @@ set(CMAKE_EXPERIMENTAL_CXX_IMPORT_STD
   # your CMake build for the exact value to use.
   "d0edc3af-4c50-42ea-a356-e2862fe7a444")
 
-set (CMAKE_CXX_EXTENSIONS OFF)
+set(CMAKE_CXX_EXTENSIONS OFF)
 
 project(hello)
 
@@ -18,6 +18,13 @@ set_target_properties(hello PROPERTIES
     CXX_STANDARD 23
     CXX_STANDARD_REQUIRED ON
     CXX_MODULE_STD ON
+    COMPILE_WARNING_AS_ERROR ON
     DEBUG_POSTFIX "_d"
 )
+
+target_compile_options(hello PRIVATE
+	$<$<CXX_COMPILER_ID:MSVC>:/W4> # Should add /WX too
+	$<$<NOT:$<CXX_COMPILER_ID:MSVC>>:-Wall -Wextra -pedantic>
+)
+
 

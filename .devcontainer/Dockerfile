@@ -1,8 +1,8 @@
 FROM ubuntu:resolute
 
 # Build-time arguments for user/group IDs
-ARG UID=1002
-ARG GID=1002
+ARG UID=1000
+ARG GID=1000
 ARG USER=kevin
 ARG CMAKETAR=cmake-4.2.3-linux-x86_64.tar.gz
 
@@ -19,7 +19,8 @@ RUN cd \
  && rm "${CMAKETAR}"
 
 # Create group and user using provided IDs
-RUN groupadd -g "${GID}" "${USER}" \
+RUN userdel -r ubuntu \
+ && groupadd -g "${GID}" "${USER}" \
  && useradd -u "${UID}" -g "${GID}" -m -s /bin/bash "${USER}"
 
 USER ${USER}
