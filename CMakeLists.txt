@@ -13,11 +13,12 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 project(hello)
 
 add_executable(hello main.cpp)
-target_sources(hello PRIVATE FILE_SET CXX_MODULES FILES test_module.cpp another_module.cpp)
+target_sources(hello PRIVATE FILE_SET CXX_MODULES FILES test_module.cpp another_module.cpp shape_module.cpp)
 set_target_properties(hello PROPERTIES 
     CXX_STANDARD 23
     CXX_STANDARD_REQUIRED ON
     CXX_MODULE_STD ON
+    # CXX_SCAN_FOR_MODULES ON
     COMPILE_WARNING_AS_ERROR ON
     DEBUG_POSTFIX "_d"
 )
