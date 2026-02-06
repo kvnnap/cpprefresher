@@ -1,4 +1,3 @@
-#include "shape.h"
 import std;
 import test;
 import shape;
